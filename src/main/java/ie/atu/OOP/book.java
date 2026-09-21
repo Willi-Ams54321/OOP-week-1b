@@ -1,17 +1,31 @@
 package ie.atu.OOP;
 
-public class Book {
+public class book {
     public String title ;
     public String author ;
     public int pageCount;
     public boolean available = true;
 
-    public voidisplayDetails()
+    public void displayDetails()
     {
         System.out.println("Book: " +title);
         System.out.println("Book Author: " + author);
         System.out.println("Book Page Count: " + pageCount);
         System.out.println("Is book available: " + available);
+    }
+
+    public void borrowBook()
+    {
+        if(available)
+        {
+            available=false;
+            System.out.println(title + " borrowed successfully");
+        }
+        else
+        {
+            System.out.println(title + " not available");
+
+        }
     }
 
 }

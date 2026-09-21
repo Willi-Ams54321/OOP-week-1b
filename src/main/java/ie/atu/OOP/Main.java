@@ -7,17 +7,23 @@ public class Main {
     {
         System.out.println("Hello World");
 
-        Book firstBook = new Book();
+        book firstBook = new book();
 
-        firstBook.title = "Duen";
+        firstBook.title = "Dune";
         firstBook.author = "Frank";
-        firstBook.pageCount = "412";
+        firstBook.pageCount = 412;
+
+        firstBook.displayDetails();
+        firstBook.borrowBook();
+        System.out.println("\n");
+        firstBook.displayDetails();
+        System.out.println("\n: ");
 
         System.out.println("First Book: " + firstBook.title);
         System.out.println("First Book: " + firstBook.author);
         System.out.println("First Book: " + firstBook.pageCount);
 
-        Book secondBook = new Book();
+        book secondBook = new book();
         secondBook.title = "Star trek";
         secondBook.author = "Dave";
         secondBook.pageCount = 300;
