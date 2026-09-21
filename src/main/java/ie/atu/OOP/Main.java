@@ -7,5 +7,25 @@ public class Main {
     {
         System.out.println("Hello World");
 
+        Book firstBook = new Book();
+
+        firstBook.title = "Duen";
+        firstBook.author = "Frank";
+        firstBook.pageCount = "412";
+
+        System.out.println("First Book: " + firstBook.title);
+        System.out.println("First Book: " + firstBook.author);
+        System.out.println("First Book: " + firstBook.pageCount);
+
+        Book secondBook = new Book();
+        secondBook.title = "Star trek";
+        secondBook.author = "Dave";
+        secondBook.pageCount = 300;
+        secondBook.available = true;
+
+        secondBook.displayDetails();
+
+
+
     }
 }
