@@ -1,15 +1,19 @@
 package ie.atu.OOP;
 
-import java.awt.print.Book;
-
-public class book
+public class Book
 {
     private String title ;
     private String author ;
     private int pageCount;
+    private BookStatus status;
+
+    public enum BookStatus{
+        AVAILABLE,
+        ON_LOAN
+    }
 
 
-    public book(String title, String author, int pageCount){
+    public Book(String title, String author, int pageCount){
         if(title==null || title.isBlank())
         {
             throw new IllegalArgumentException("Title is null or blank");
@@ -28,6 +32,7 @@ public class book
         this.title = title;
         this.author = author;
         this.pageCount = pageCount;
+        this.status = BookStatus.AVAILABLE;
     }
 
     public String getTitle() {
@@ -41,4 +46,18 @@ public class book
     public int getPageCount() {
         return pageCount;
     }
+
+    public BookStatus getBookStatus() {
+        return status;
+    }
+    public void borrowBook(){
+        if(status== Book.BookStatus.ON_LOAN) {
+            throw new IllegalStateException(
+                    "Book is already on a loan");
+        }
+        status= Book.BookStatus.ON_LOAN;
+    }
 }
+
+
+
