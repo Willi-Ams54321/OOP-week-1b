@@ -57,6 +57,13 @@ public class Book
         }
         status= Book.BookStatus.ON_LOAN;
     }
+    public void returnBook(){
+        if(status== Book.BookStatus.AVAILABLE) {
+            throw new IllegalStateException(
+                    "Book is already available");
+        }
+        status= Book.BookStatus.AVAILABLE;
+    }
 }
 
 

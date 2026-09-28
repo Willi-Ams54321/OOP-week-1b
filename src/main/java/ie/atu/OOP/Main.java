@@ -5,13 +5,11 @@ package ie.atu.OOP;
 public class Main {
     public static void main(String[] args) {
         Book book = new Book("Dune", "Frank Herbert", 412);
-        System.out.println(book.getBookStatus());
         book.borrowBook();
-        System.out.println(book.getBookStatus());
-
-        try {
-            book.borrowBook();
-        } catch (IllegalStateException ex) {
+        book.returnBook();
+        try{
+            book.returnBook();
+        }catch(IllegalStateException ex){
             System.out.println(ex.getMessage());
         }
         System.out.println(book.getBookStatus());
