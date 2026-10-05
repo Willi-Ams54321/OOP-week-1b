@@ -11,12 +11,29 @@ public class Main {
         service.addBook(first);
         service.addBook(second);
 
-        System.out.println("Total books in Library service is " + service.getBookCount());
+        /*System.out.println("Total books in Library service is " + service.getBookCount());
 
         for(Book book : service.getAllBook())
         {
             System.out.println(book.getTitle());
+        }*/
+        Book found = service.fiindBookByTitle("Dune");
+
+       /* if(found != null) {
+            System.out.println("Found: " + found.getTitle());
         }
+
+        Book missing = service.fiindBookByTitle("The Hobbit");
+
+        if(missing == null) {
+            System.out.println("The hobbit was not found ");
+        }*/
+        System.out.println( "Remove Clean Code :"
+                + service.removeBook("Clean Code"));
+        System.out.println( "Remove Again :"
+                + service.removeBook("clean Code"));
+        System.out.println("Books left"
+        + service.getBookCount());
     }
     }
 
