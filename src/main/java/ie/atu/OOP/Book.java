@@ -47,7 +47,7 @@ public class Book
         return pageCount;
     }
 
-    public BookStatus getBookStatus() {
+    public BookStatus getStatus() {
         return status;
     }
     public void borrowBook(){
