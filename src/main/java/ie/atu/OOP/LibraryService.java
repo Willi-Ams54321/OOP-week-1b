@@ -1,10 +1,11 @@
 package ie.atu.OOP;
-
+import java.util.ArrayList;
 import java.util.*;
 
 public class LibraryService {
     private static final int MAX_LOAN_DAYS = 14;
-    private final list<Book> books = new ArrayList<Book>();
+
+    private final List<Book> books = new ArrayList<Book>();
 
     public void loanBook(Book book, int loanDays){
         if(book == null){
@@ -38,7 +39,7 @@ public class LibraryService {
         return books.size();
     }
 
-    public list<Book> getAllBook()
+    public List<Book> getAllBook()
     {
         return new ArrayList<>(books);
     }
