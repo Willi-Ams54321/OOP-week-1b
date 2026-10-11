@@ -8,19 +8,32 @@ public class Main {
         Book second = new Book("Clean Code", "Robert C. Martin",464);
         LibraryService service = new LibraryService();
 
-        System.out.println(first.getStatus());
-        service.loanBook(first,7);
-        System.out.println(first.getStatus());
-        service.returnBook(first);
-        System.out.println(first.getStatus());
-        System.out.println(second.getStatus());
+        service.addBook(first);
+        service.addBook(second);
 
-        try{
-            service.loanBook(first,15);
-        } catch (IllegalArgumentException ex){
-            System.out.println(ex.getMessage());
+        /*System.out.println("Total books in Library service is " + service.getBookCount());
+
+        for(Book book : service.getAllBook())
+        {
+            System.out.println(book.getTitle());
+        }*/
+        Book found = service.fiindBookByTitle("Dune");
+
+       /* if(found != null) {
+            System.out.println("Found: " + found.getTitle());
         }
-        System.out.println(first.getStatus());
+
+        Book missing = service.fiindBookByTitle("The Hobbit");
+
+        if(missing == null) {
+            System.out.println("The hobbit was not found ");
+        }*/
+        System.out.println( "Remove Clean Code :"
+                + service.removeBook("Clean Code"));
+        System.out.println( "Remove Again :"
+                + service.removeBook("clean Code"));
+        System.out.println("Books left"
+        + service.getBookCount());
     }
     }
 
