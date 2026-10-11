@@ -2,9 +2,9 @@ package ie.atu.OOP;
 
 public class Book
 {
-    private String title ;
-    private String author ;
-    private int pageCount;
+    private  String title ;
+    private  String author ;
+    private  int pageCount;
     private BookStatus status;
 
     public enum BookStatus{

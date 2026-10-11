@@ -50,7 +50,8 @@ public class LibraryService {
     {
         return new ArrayList<>(books);
     }
-    public Book fiindBookByTitle(String title)
+
+    public Book findBookByTitle(String title)
     {
         for(Book book : books)
         {
@@ -63,13 +64,24 @@ public class LibraryService {
         }
     public boolean removeBook(String title)
     {
-        Book book =  fiindBookByTitle(title);
+        Book book =  findBookByTitle(title);
         if(book == null)
         {
             return false;
         }
         books.remove(book);
         return true;
+    }
+    public boolean returnBook(String title)
+    {
+        Book book = findBookByTitle(title);
+        if(book == null)
+        {
+            return false;
+        }
+        book.returnBook();
+        return true;
+
     }
 
 
