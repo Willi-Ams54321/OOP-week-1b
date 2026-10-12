@@ -2,41 +2,48 @@ package ie.atu.OOP;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    public static void main(String[] args) {
-        Book first = new Book("Dune","Frank Herbert",412);
-        Book middle = new Book("1984","George Orwell",328);
-        Book second = new Book("Clean Code", "Robert C. Martin",464);
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
 
+
+public class Main
+{
+    public static void main(String[] args)
+    {
         LibraryService service = new LibraryService();
-
-        service.addBook(first);
-        service.addBook(second);
-        service.addBook(middle);
-
-        System.out.println("Count "+ service.getBookCount());
-
-        Book found = service.findBookByTitle("Dune");
-        if(found != null){
-            System.out.println("Found: " +found.getTitle());
+        BookFileStore store = new BookFileStore(
+                Path.of("data", "books.csv"));
+        try {
+            for (Book book : store.load()) {
+                service.addBook(book);
+            }
+            System.out.println("Loaded: " + service.getBookCount());
         }
-
-        System.out.println("Loan Dune: "
-                + service.loanBook("Dune",7));
-        System.out.println("Dune Status: "+first.getStatus());
-
-        System.out.println("Loan missing: "
-        + service.loanBook("The Hobbit",7));
-
-        System.out.println("Return Dune: "
-        +service.returnBook("Dune"));
-        System.out.println("Dune Status: "+ first.getStatus());
-
-        System.out.println("Remove Clean Code: "
-        +service.removeBook("Clean Code"));
-        System.out.println("Final Count: "
-        +service.getBookCount());
-
+        catch (IOException ex) {
+            System.out.println("Load failed: " + ex.getMessage());
+            return;
+        }
+        if (service.getBookCount() == 0) {
+            Book dune = new Book("Dune", "Frank Herbert", 412);
+            Book cleanCode = new Book(
+                    "Clean Code", "Robert C. Martin", 464);
+            service.addBook(dune);
+            service.addBook(cleanCode);
+            service.loanBook("Dune", 7);
+        }
+        service.getAllBook();
+        try
+        {
+            store.save(service.getBooks());
+            System.out.println("Saved: " + service.getBookCount());
+        }
+        catch (IOException ex)
+        {
+            System.out.println("Save failed: " + ex.getMessage());
+        }
     }
     }
 
